@@ -3,18 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Dhruv Lamba — college student and aspiring developer.">
-    <title>Dhruv Lamba — Personal Website</title>
+    <meta name="description" content="Dhruv Lamba — college student learning web development, design, and digital creation from the ground up.">
+    <title>Dhruv Lamba</title>
     <link rel="stylesheet" href="style.css">
+    <noscript>
+        <style>
+            /* Without JavaScript, skip straight to the resting state so
+               nothing stays invisible: entrance/reveal transitions and
+               scroll-linked motion are progressive enhancements only. */
+            .entrance, .reveal, .reveal-line { opacity: 1 !important; transform: none !important; }
+            .cursor-dot, .cursor-ring, .spotlight { display: none !important; }
+        </style>
+    </noscript>
 </head>
 <body>
-    <div class="cursor-glow" aria-hidden="true"></div>
-    <div class="ambient-glow glow-one"></div>
-    <div class="ambient-glow glow-two"></div>
 
-    <header class="navbar">
-        <a href="#" class="logo">DL</a>
-        <nav>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ============================================================
+         Shared SVG defs (gradient + blur used by both wing instances)
+         ============================================================ -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <defs>
+            <radialGradient id="featherFade" cx="8%" cy="4%" r="95%">
+                <stop offset="0%" stop-color="#f5f5f2" stop-opacity="0.85" />
+                <stop offset="45%" stop-color="#f5f5f2" stop-opacity="0.4" />
+                <stop offset="100%" stop-color="#f5f5f2" stop-opacity="0" />
+            </radialGradient>
+        </defs>
+    </svg>
+
+    <!-- ============================================================
+         ATMOSPHERE — fixed background layers, behind all content.
+         Purely decorative, so everything here is aria-hidden.
+         ============================================================ -->
+    <div class="atmosphere" aria-hidden="true">
+        <div class="ambient-glow glow-one"></div>
+        <div class="ambient-glow glow-two"></div>
+
+        <div class="wings">
+            <div class="wing-wrap right">
+                <svg class="wing-svg" viewBox="-40 -60 950 950" focusable="false">
+                    <g fill="url(#featherFade)">
+                        <path d="M 0.0,0.0 C 62.8,32.6 126.9,-2.6 178.2,-25.1 C 122.7,-32.5 51.3,-48.7 0.0,0.0 Z" opacity="0.90"/>
+                        <path d="M 62.2,34.4 C 141.6,82.5 228.6,42.0 297.9,17.0 C 225.7,2.4 133.7,-24.9 62.2,34.4 Z" opacity="0.85"/>
+                        <path d="M 124.4,76.3 C 216.5,145.1 328.6,105.6 417.0,83.1 C 329.8,56.5 219.6,11.8 124.4,76.3 Z" opacity="0.80"/>
+                        <path d="M 186.7,121.6 C 286.4,215.6 424.6,183.8 532.3,169.0 C 432.6,125.8 308.1,57.9 186.7,121.6 Z" opacity="0.75"/>
+                        <path d="M 248.9,169.2 C 350.2,292.0 514.0,275.5 640.3,274.1 C 531.7,209.8 398.0,113.5 248.9,169.2 Z" opacity="0.70"/>
+                        <path d="M 311.1,218.7 C 406.6,372.8 594.1,379.3 736.7,397.1 C 624.0,307.8 488.0,178.8 311.1,218.7 Z" opacity="0.65"/>
+                        <path d="M 373.3,269.8 C 454.7,456.2 661.8,493.5 817.3,536.1 C 706.5,418.9 576.1,253.8 373.3,269.8 Z" opacity="0.60"/>
+                        <path d="M 435.6,322.1 C 491.3,531.3 703.3,603.7 860.2,673.4 C 762.3,532.3 651.5,337.7 435.6,322.1 Z" opacity="0.55"/>
+                        <path d="M 497.8,375.5 C 518.6,577.0 703.8,675.0 838.5,762.4 C 768.8,617.7 695.0,421.6 497.8,375.5 Z" opacity="0.50"/>
+                        <path d="M 560.0,430.0 C 548.6,618.3 703.9,736.3 814.4,837.1 C 772.2,693.6 734.2,502.3 560.0,430.0 Z" opacity="0.45"/>
+                    </g>
+                </svg>
+            </div>
+            <div class="wing-wrap left">
+                <svg class="wing-svg" viewBox="-40 -60 950 950" focusable="false">
+                    <g fill="url(#featherFade)">
+                        <path d="M 0.0,0.0 C 62.8,32.6 126.9,-2.6 178.2,-25.1 C 122.7,-32.5 51.3,-48.7 0.0,0.0 Z" opacity="0.90"/>
+                        <path d="M 62.2,34.4 C 141.6,82.5 228.6,42.0 297.9,17.0 C 225.7,2.4 133.7,-24.9 62.2,34.4 Z" opacity="0.85"/>
+                        <path d="M 124.4,76.3 C 216.5,145.1 328.6,105.6 417.0,83.1 C 329.8,56.5 219.6,11.8 124.4,76.3 Z" opacity="0.80"/>
+                        <path d="M 186.7,121.6 C 286.4,215.6 424.6,183.8 532.3,169.0 C 432.6,125.8 308.1,57.9 186.7,121.6 Z" opacity="0.75"/>
+                        <path d="M 248.9,169.2 C 350.2,292.0 514.0,275.5 640.3,274.1 C 531.7,209.8 398.0,113.5 248.9,169.2 Z" opacity="0.70"/>
+                        <path d="M 311.1,218.7 C 406.6,372.8 594.1,379.3 736.7,397.1 C 624.0,307.8 488.0,178.8 311.1,218.7 Z" opacity="0.65"/>
+                        <path d="M 373.3,269.8 C 454.7,456.2 661.8,493.5 817.3,536.1 C 706.5,418.9 576.1,253.8 373.3,269.8 Z" opacity="0.60"/>
+                        <path d="M 435.6,322.1 C 491.3,531.3 703.3,603.7 860.2,673.4 C 762.3,532.3 651.5,337.7 435.6,322.1 Z" opacity="0.55"/>
+                        <path d="M 497.8,375.5 C 518.6,577.0 703.8,675.0 838.5,762.4 C 768.8,617.7 695.0,421.6 497.8,375.5 Z" opacity="0.50"/>
+                        <path d="M 560.0,430.0 C 548.6,618.3 703.9,736.3 814.4,837.1 C 772.2,693.6 734.2,502.3 560.0,430.0 Z" opacity="0.45"/>
+                    </g>
+                </svg>
+            </div>
+        </div>
+
+        <div class="grain"></div>
+        <div class="particles"></div>
+        <div class="spotlight"></div>
+    </div>
+
+    <!-- Custom cursor (hidden on touch devices via CSS + JS) -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <header class="navbar entrance entrance-d0">
+        <a href="#" class="logo" aria-label="Dhruv Lamba — back to top">DL</a>
+        <nav class="nav-links" aria-label="Primary">
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
             <a href="#projects">Projects</a>
@@ -22,85 +95,120 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main">
         <section class="hero">
-            <!-- Decorative angel silhouette: intentionally subtle and oversized -->
-            <div class="angel" aria-hidden="true">
-                <div class="halo"></div>
-                <div class="angel-head"></div>
-                <div class="angel-body"></div>
-                <div class="wing wing-left"></div>
-                <div class="wing wing-right"></div>
-            </div>
-
             <div class="hero-content">
-                <div class="profile-ring reveal hero-reveal hero-reveal-1">
-                    <img src="profile.jpg" alt="Profile picture of Dhruv Lamba">
+                <div class="profile-stage">
+                    <div class="entrance entrance-profile entrance-d1">
+                        <div class="profile-halo"></div>
+                        <div class="profile-ring">
+                            <img
+                                src="profile.jpg"
+                                alt="Dhruv Lamba's profile picture — a stylised illustrated portrait with angel wings."
+                                width="168"
+                                height="168"
+                            >
+                        </div>
+                    </div>
                 </div>
-                <p class="eyebrow reveal hero-reveal hero-reveal-2">COLLEGE STUDENT · LEARNING TO BUILD</p>
-                <h1 class="reveal hero-reveal hero-reveal-3">Dhruv <span>Lamba.</span></h1>
-                <p class="hero-text reveal hero-reveal hero-reveal-4">
-                    Exploring web development, design, and technology — one project at a time.
+
+                <p class="eyebrow entrance entrance-d2">College student, learning to build</p>
+                <h1 class="entrance entrance-d3">Dhruv <span class="accent">Lamba.</span></h1>
+                <p class="hero-text entrance entrance-d4">
+                    Exploring web development, design, and digital creation —
+                    one project at a time.
                 </p>
-                <div class="hero-buttons reveal hero-reveal hero-reveal-5">
+
+                <div class="hero-buttons entrance entrance-d5">
                     <a class="button primary" href="#projects">View my work</a>
                     <a class="button secondary" href="mailto:dhruvlamba21@gmail.com">Contact me</a>
                 </div>
             </div>
-            <div class="scroll-note reveal hero-reveal hero-reveal-6">SCROLL TO EXPLORE ↓</div>
+
+            <div class="scroll-cue">
+                <span>Scroll</span>
+                <span class="line"></span>
+            </div>
         </section>
 
-        <section id="about" class="section about">
-            <div class="section-label">01 / ABOUT</div>
-            <div>
-                <h2 class="reveal reveal-up">Just getting started.</h2>
-                <p class="reveal reveal-up reveal-delay-1">
+        <section id="about" class="section about" data-reveal-group>
+            <p class="section-label reveal">01 / About</p>
+            <div class="section-body">
+                <h2 class="reveal">Just getting started.</h2>
+                <p class="reveal">
                     I'm Dhruv, a college student building my first website and learning how
-                    the web works from the ground up. This site is the beginning of my journey
-                    into development and digital creation.
+                    the web works from the ground up. This site is the beginning of my
+                    journey into development and digital creation.
                 </p>
             </div>
         </section>
 
-        <section id="skills" class="section">
-            <div class="section-label">02 / SKILLS</div>
-            <div class="skills-wrap">
-                <h2 class="reveal reveal-up">Things I'm learning.</h2>
-                <div class="skill-grid">
-                    <div class="skill reveal reveal-up reveal-delay-1">HTML <span>01</span></div>
-                    <div class="skill reveal reveal-up reveal-delay-2">CSS <span>02</span></div>
-                    <div class="skill reveal reveal-up reveal-delay-3">JavaScript <span>03</span></div>
-                    <div class="skill reveal reveal-up reveal-delay-4">Python <span>04</span></div>
-                    <div class="skill reveal reveal-up reveal-delay-5">Git & GitHub <span>05</span></div>
-                    <div class="skill reveal reveal-up reveal-delay-6">UI / Web Design <span>06</span></div>
+        <section id="skills" class="section skills" data-reveal-group>
+            <p class="section-label reveal">02 / Skills</p>
+            <div class="section-body">
+                <h2 class="reveal">Things I'm learning.</h2>
+                <div class="skill-list">
+                    <div class="skill-row reveal-line reveal">
+                        <span class="name">HTML</span>
+                        <span class="meta"><span class="index">01</span><span class="arrow">↗</span></span>
+                    </div>
+                    <div class="skill-row reveal-line reveal">
+                        <span class="name">CSS</span>
+                        <span class="meta"><span class="index">02</span><span class="arrow">↗</span></span>
+                    </div>
+                    <div class="skill-row reveal-line reveal">
+                        <span class="name">JavaScript</span>
+                        <span class="meta"><span class="index">03</span><span class="arrow">↗</span></span>
+                    </div>
+                    <div class="skill-row reveal-line reveal">
+                        <span class="name">Python</span>
+                        <span class="meta"><span class="index">04</span><span class="arrow">↗</span></span>
+                    </div>
+                    <div class="skill-row reveal-line reveal">
+                        <span class="name">Git &amp; GitHub</span>
+                        <span class="meta"><span class="index">05</span><span class="arrow">↗</span></span>
+                    </div>
+                    <div class="skill-row reveal-line reveal">
+                        <span class="name">UI / Web Design</span>
+                        <span class="meta"><span class="index">06</span><span class="arrow">↗</span></span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="section projects">
-            <div class="section-label">03 / PROJECTS</div>
-            <div class="project-card reveal reveal-up">
-                <div>
-                    <p class="card-kicker">PROJECT 001</p>
-                    <h2 class="reveal reveal-up reveal-delay-1">My First Website</h2>
-                    <p>
-                        This portfolio is my first project — built from scratch with HTML,
-                        CSS and JavaScript, then published on the web.
-                    </p>
+        <section id="projects" class="section projects" data-reveal-group>
+            <p class="section-label reveal">03 / Projects</p>
+            <div class="section-body">
+                <div class="project-card reveal">
+                    <div>
+                        <p class="project-kicker">Project 001</p>
+                        <h2>My First Website</h2>
+                        <p>
+                            This portfolio is my first project — built from scratch with
+                            HTML, CSS and JavaScript, then published on the web.
+                        </p>
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                    <div class="project-arrow" aria-hidden="true">↗</div>
                 </div>
-                <div class="project-arrow">↗</div>
             </div>
         </section>
 
-        <section id="contact" class="section contact">
-            <div class="section-label">04 / CONTACT</div>
-            <div>
-                <h2 class="reveal reveal-up">Let's connect.</h2>
-                <p class="reveal reveal-up reveal-delay-1">Have something to say? Send me an email or check out my GitHub.</p>
-                <div class="contact-links reveal reveal-up reveal-delay-2">
-                    <a href="mailto:dhruvlamba21@gmail.com">dhruvlamba21@gmail.com <span>↗</span></a>
-                    <a href="https://github.com/dhruvlamba21-cloud" target="_blank" rel="noopener">
-                        GitHub <span>↗</span>
+        <section id="contact" class="section contact" data-reveal-group>
+            <p class="section-label reveal">04 / Contact</p>
+            <div class="section-body">
+                <h2 class="reveal">Let's connect.</h2>
+                <p class="reveal">Have something to say? Send me an email or check out my GitHub.</p>
+                <div class="contact-links">
+                    <a class="reveal-line reveal" href="mailto:dhruvlamba21@gmail.com">
+                        dhruvlamba21@gmail.com <span aria-hidden="true">↗</span>
+                    </a>
+                    <a class="reveal-line reveal" href="https://github.com/dhruvlamba21-cloud" target="_blank" rel="noopener">
+                        GitHub <span aria-hidden="true">↗</span>
                     </a>
                 </div>
             </div>
@@ -109,7 +217,7 @@
 
     <footer>
         <span>© <span id="year"></span> Dhruv Lamba</span>
-        <span>BUILT FROM SCRATCH</span>
+        <span>Built from scratch</span>
     </footer>
 
     <script src="script.js"></script>
